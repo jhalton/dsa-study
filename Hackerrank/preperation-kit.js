@@ -24,7 +24,8 @@ function matchingStrings(strings, queries) {
 //My thought process was to create an object to hold the keys and count of how many times
 //that integer appears.
 //Then, access that key by turning that object into an array of keys and using
-//the built-in filter method to find the find the key whose value is equal to 1
+//the built-in find() method to find the find the key whose value is equal to 1
+
 function lonelyinteger(a) {
   const intObj = {};
 
@@ -36,4 +37,18 @@ function lonelyinteger(a) {
     }
   });
   return Object.keys(intObj).find((key) => intObj[key] === 1);
+}
+
+//-----------------
+
+function pangrams(s) {
+  let letters = [" "];
+
+  for (let i = 0; i < s.length; i++) {
+    if (!letters.includes(s[i].toLowerCase())) {
+      letters.push(s[i].toLowerCase());
+      if (letters.length === 27) return "pangram";
+    }
+  }
+  return "not pangram";
 }
