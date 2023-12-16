@@ -41,6 +41,17 @@ function lonelyinteger(a) {
 
 //-----------------
 
+//I started off with a letters array to keep track of whether a character exists in the
+//letters already. I start the array with a " " first and count up to 27. I utilized the
+//built-in toLowerCase() to ignore case in the letters.
+//Some edge cases I would like to account for that would improve this are: additional
+//characters that could be added to the sentence. There is nothing that specifically
+//states that all characters will be letters. There could also be punctuation or numbers,
+//or other non-letter characters in the sentence. These are things I would like to approach
+//The next time I run through these practices.
+//Something to consider, also, moving forward when using a for loop is where I choose to put
+//the return. I want to exit the loop as soon as the condition is met rather than return to it
+//and then check to see if the condition has been met.
 function pangrams(s) {
   let letters = [" "];
 
