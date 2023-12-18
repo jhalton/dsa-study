@@ -26,3 +26,8 @@ var isValid = function (s) {
   }
   return stack.length === 0;
 };
+//-----------------------------
+
+var merge = function (intervals) {
+  intervals.sort((a, b) => a - b);
+};
