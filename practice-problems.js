@@ -80,3 +80,41 @@ const compress = (s) => {
   }
   return res.join("");
 };
+
+//------------------------------12.20.23--------------------------
+
+//This was my solution. I split the strings into arrays, sort them, then join them.
+//If the two strings are equal to each other, return true. Else, return false.
+const anagrams = (s1, s2) => {
+  return s1.split("").sort().join("") === s2.split("").sort().join("");
+};
+
+//Alvin's solution creates a hash. You check to see if the character is already in the count.
+//Then when you go through the second string, we are looking to see if all of the characters
+//are in the first string. If at the end, we have any leftover nums in the count
+//or we have tried to decrement to less than 0, we return false. If we never meet a false
+//condition, we return true
+const anagramsAlt = (s1, s2) => {
+  const count = {};
+
+  for (let char of s1) {
+    if (!(char in count)) {
+      count[char] = 0;
+    }
+    count[char] += 1;
+  }
+
+  for (let char of s2) {
+    if (char in count) {
+      count[char] -= 1;
+    } else {
+      return false;
+    }
+  }
+  for (let char in count) {
+    if (count[char] !== 0) {
+      return false;
+    }
+  }
+  return true;
+};
