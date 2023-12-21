@@ -118,3 +118,45 @@ const anagramsAlt = (s1, s2) => {
   }
   return true;
 };
+
+//---------------------------------
+
+//I chose to create a hash, and a variable to store the highest frequency.
+//I iterated through the string to build my hash. Then found the highest count.
+//Last, I returned the first key to meet the highest count using built-in find().
+const mostFrequentChar = (s) => {
+  const count = {};
+  let highestCount = 0;
+
+  for (let char of s) {
+    if (count[char]) {
+      count[char] += 1;
+    } else {
+      count[char] = 1;
+    }
+  }
+  highestCount = Math.max(...Object.values(count));
+  return Object.keys(count).find((key) => count[key] === highestCount);
+};
+
+//Structy solution starts off similar to mine. However, he does not use built in functions.
+//a best variable is used to store the character with the highest frequency. He returns
+//the 'best' character at the end of the function.
+const mostFrequentCharAlt = (s) => {
+  const count = {};
+
+  for (let char of s) {
+    if (!(char in count)) {
+      count[char] = 0;
+    }
+    count[char] += 1;
+  }
+
+  let best = null;
+  for (let char of s) {
+    if (best === null || count[char] > count[best]) {
+      best = char;
+    }
+  }
+  return best;
+};
