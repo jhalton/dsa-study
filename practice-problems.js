@@ -192,3 +192,21 @@ const pairSumLinear = (numbers, targetSum) => {
     previous[num] = i;
   }
 };
+
+//-----------------------------------
+
+//I based my approach off of the last problem. The only difference is needing
+//to divide rather than subtract. This runs in O(n) time and O(n) space
+const pairProduct = (numbers, targetProduct) => {
+  const previous = {};
+
+  for (let i = 0; i < numbers.length; i++) {
+    let num = numbers[i];
+    let mult = targetProduct / num;
+
+    if (mult in previous) {
+      return [i, previous[mult]];
+    }
+    previous[num] = i;
+  }
+};
