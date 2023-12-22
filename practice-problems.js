@@ -160,3 +160,35 @@ const mostFrequentCharAlt = (s) => {
   }
   return best;
 };
+
+//--------------------12.21.23-----------------------
+
+//This is the simplest way I know how to solve this problem. The downside is that it's
+//O(n²) time which isn't ideal
+const pairSum = (numbers, targetSum) => {
+  for (let i = 0; i < numbers.length; i++) {
+    for (let j = i + 1; j < numbers.length; j++)
+      if (numbers[i] + numbers[j] === targetSum) {
+        return [i, j];
+      }
+  }
+  return;
+};
+
+//Here we want a hash! It will allow us to do this in linear time. Here we are checking
+//to see if there exists another number in the hash that will make up the targetSum.
+//There is guaranteed to be a pair and when it's found, we return and exit.
+const pairSumLinear = (numbers, targetSum) => {
+  const previous = {};
+
+  for (let i = 0; i < numbers.length; i++) {
+    let num = numbers[i];
+    let complement = targetSum - num;
+
+    if (complement in previous) {
+      return [i, previous[complement]];
+    }
+
+    previous[num] = i;
+  }
+};
