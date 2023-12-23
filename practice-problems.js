@@ -260,7 +260,7 @@ const fiveSort = (nums) => {
   i = 0;
   j = nums.length - 1;
 
-  while (i < j) {
+  while (i <= j) {
     if (nums[j] !== 5 && nums[i] === 5) {
       [nums[j], nums[i]] = [nums[i], nums[j]];
     } else if (nums[i] !== 5) {
@@ -271,3 +271,5 @@ const fiveSort = (nums) => {
   }
   return nums;
 };
+
+//The Structy solution is about the same as mine, just structured a little bit differently
