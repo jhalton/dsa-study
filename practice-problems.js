@@ -210,3 +210,31 @@ const pairProduct = (numbers, targetProduct) => {
     previous[num] = i;
   }
 };
+
+//------------------------------12.22.23-------------------------------
+
+//Don't love this solution because the time complexity sucks at the end.
+const intersection = (a, b) => {
+  // todo
+  const nums = {};
+
+  for (let i = 0; i < a.length; i++) {
+    let num = a[i];
+    if (num in nums) {
+      nums[num] += 1;
+    } else {
+      nums[num] = 1;
+    }
+  }
+  for (let j = 0; j < b.length; j++) {
+    let num = b[j];
+    if (num in nums) {
+      nums[num] += 1;
+    } else {
+      nums[num] = 1;
+    }
+  }
+  return Object.keys(nums)
+    .filter((key) => nums[key] > 1)
+    .map(Number);
+};
