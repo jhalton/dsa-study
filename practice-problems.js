@@ -238,3 +238,15 @@ const intersection = (a, b) => {
     .filter((key) => nums[key] > 1)
     .map(Number);
 };
+
+//I thought about doing a set before but I felt like I should be using a hash
+const intersectionEfficient = (a, b) => {
+  const res = [];
+  const setA = new Set(a);
+  for (let item of b) {
+    if (setA.has(item)) {
+      res.push(item);
+    }
+  }
+  return res;
+};
