@@ -250,3 +250,24 @@ const intersectionEfficient = (a, b) => {
   }
   return res;
 };
+
+//------------------------12.23.23--------------------------
+
+//Start with pointers for i and j, one at the beginning and one at the end.
+//If i === j, then we have reached the end of our sort. Otherwise, if
+// nums[i] is a five and nums[j] isn't, swap the two values.
+const fiveSort = (nums) => {
+  i = 0;
+  j = nums.length - 1;
+
+  while (i < j) {
+    if (nums[j] !== 5 && nums[i] === 5) {
+      [nums[j], nums[i]] = [nums[i], nums[j]];
+    } else if (nums[i] !== 5) {
+      i++;
+    } else if (nums[j] === 5) {
+      j--;
+    }
+  }
+  return nums;
+};
