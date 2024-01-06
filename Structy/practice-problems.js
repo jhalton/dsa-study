@@ -381,14 +381,14 @@ const sumListRecursive = (head) => {
 
 //--------------------------------------------------
 
-const a = new Node("a");
-const b = new Node("b");
-const c = new Node("c");
-const d = new Node("d");
+// const a = new Node("a");
+// const b = new Node("b");
+// const c = new Node("c");
+// const d = new Node("d");
 
-a.next = b;
-b.next = c;
-c.next = d;
+// a.next = b;
+// b.next = c;
+// c.next = d;
 
 //iterative
 const linkedListFind = (head, target) => {
@@ -436,4 +436,39 @@ const getNodeValueRecursive = (head, index) => {
   if (index === 0) return head.val;
   return getNodeValueRecursive(head.next, index - 1);
 };
-console.log(getNodeValueRecursive(a, 2));
+// console.log(getNodeValueRecursive(a, 2));
+
+//---------------------------------------------------------
+const a = new Node("a");
+const b = new Node("b");
+const c = new Node("c");
+const d = new Node("d");
+const e = new Node("e");
+const f = new Node("f");
+
+a.next = b;
+b.next = c;
+c.next = d;
+d.next = e;
+e.next = f;
+
+const reverseList = (head) => {
+  let curr = head;
+  let prev = null;
+  while (curr !== null) {
+    const next = curr.next;
+    curr.next = prev;
+    prev = curr;
+    curr = next;
+  }
+  return prev;
+};
+
+const reverseListRecursive = (head, prev = null) => {
+  if (head === null) return prev;
+  const next = head.next;
+  head.next = prev;
+  return reverseListRecursive(next, head);
+};
+
+// console.log(reverseListRecursive(a));
