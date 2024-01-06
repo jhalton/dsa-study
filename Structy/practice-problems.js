@@ -409,4 +409,31 @@ const linkedListFindRecursive = (head, target) => {
   return linkedListFindRecursive(head.next, target);
 };
 
-console.log(linkedListFindRecursive(a, "c"));
+// console.log(linkedListFindRecursive(a, "c"));
+
+//------------------------------------------------------
+
+//iterative
+const getNodeValue = (head, index) => {
+  let i = 0;
+  let curr = head;
+  while (curr !== null) {
+    if (i === index) return curr.val;
+    i++;
+    curr = curr.next;
+  }
+  return null;
+};
+
+//We need to reframe the way we look at this when using recursion. Here, we're counting down to where index
+//is going to be zero. We are counting down the number of recursive calls needed for the head to meet the
+//index. On either side of our list is a null value, so if our index is greater than the number of nodes in our list,
+//we're going to run into null, where we will return null. Otherwise, when our index countdown reaches 0,
+//we'll return the value of the node there.
+//recursive
+const getNodeValueRecursive = (head, index) => {
+  if (head === null) return null;
+  if (index === 0) return head.val;
+  return getNodeValueRecursive(head.next, index - 1);
+};
+console.log(getNodeValueRecursive(a, 2));
