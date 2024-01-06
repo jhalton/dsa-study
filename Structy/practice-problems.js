@@ -313,4 +313,38 @@ const printLinkedList = (head) => {
   printLinkedList(head.next);
 };
 
-printLinkedList(a);
+//--------------------------01.06.24--------------------------------------
+
+//Alvin approaches these types of problems often by focusing first on the traversal
+//and then adding in the thing that needs to be done.
+//Your logic should pretty much always be focused on your current node. Stay very present.
+
+//iterative
+const linkedListValues = (head) => {
+  const resArr = [];
+  let curr = head;
+
+  while (curr !== null) {
+    resArr.push(curr.val);
+    curr = curr.next;
+  }
+  return resArr;
+};
+
+//Alvin breaks this down into two functions. Split this up so that the recursion doesn't have to create
+//multiple arrays. It's more efficient so we don't run into an n² run time.
+//recursive
+
+const linkedListValuesRecursive = (head) => {
+  const values = [];
+  fillValues(head, values);
+  return values;
+};
+
+const fillValues = (head, values) => {
+  if (head === null) return;
+  values.push(head.val);
+  fillValues(head.next, values);
+};
+
+console.log(linkedListValuesRecursive(a));
