@@ -284,14 +284,14 @@ class Node {
   }
 }
 
-const a = new Node("A");
-const b = new Node("B");
-const c = new Node("C");
-const d = new Node("D");
+// const a = new Node("A");
+// const b = new Node("B");
+// const c = new Node("C");
+// const d = new Node("D");
 
-a.next = b;
-b.next = c;
-c.next = d;
+// a.next = b;
+// b.next = c;
+// c.next = d;
 
 //      A -> B -> C -> D -> NULL
 //      cur
@@ -347,4 +347,36 @@ const fillValues = (head, values) => {
   fillValues(head.next, values);
 };
 
-console.log(linkedListValuesRecursive(a));
+//-------------------------------------------------------
+const a = new Node(2);
+const b = new Node(8);
+const c = new Node(3);
+const d = new Node(-1);
+const e = new Node(7);
+
+a.next = b;
+b.next = c;
+c.next = d;
+d.next = e;
+
+//iterative
+const sumList = (head) => {
+  let sum = 0;
+  let curr = head;
+  while (curr !== null) {
+    sum += curr.val;
+    curr = curr.next;
+  }
+  return sum;
+};
+
+//recursive
+const sumListRecursive = (head) => {
+  //Start with a meaningfull base case. If there are no nodes, we should return 0
+  if (head === null) return 0;
+
+  //If there IS a node, we want to add our head to the value of the sum of our remaining list
+  return head.val + sumList(head.next);
+};
+
+console.log(sumListRecursive(a));
