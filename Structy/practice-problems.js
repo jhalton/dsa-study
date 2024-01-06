@@ -348,16 +348,16 @@ const fillValues = (head, values) => {
 };
 
 //-------------------------------------------------------
-const a = new Node(2);
-const b = new Node(8);
-const c = new Node(3);
-const d = new Node(-1);
-const e = new Node(7);
+// const a = new Node(2);
+// const b = new Node(8);
+// const c = new Node(3);
+// const d = new Node(-1);
+// const e = new Node(7);
 
-a.next = b;
-b.next = c;
-c.next = d;
-d.next = e;
+// a.next = b;
+// b.next = c;
+// c.next = d;
+// d.next = e;
 
 //iterative
 const sumList = (head) => {
@@ -379,4 +379,34 @@ const sumListRecursive = (head) => {
   return head.val + sumList(head.next);
 };
 
-console.log(sumListRecursive(a));
+//--------------------------------------------------
+
+const a = new Node("a");
+const b = new Node("b");
+const c = new Node("c");
+const d = new Node("d");
+
+a.next = b;
+b.next = c;
+c.next = d;
+
+//iterative
+const linkedListFind = (head, target) => {
+  let curr = head;
+  while (curr !== null) {
+    if (curr.val === target) return true;
+    curr = curr.next;
+  }
+  return false;
+};
+
+//recursive
+const linkedListFindRecursive = (head, target) => {
+  if (head === null) return false;
+
+  if (head.val === target) return true;
+
+  return linkedListFindRecursive(head.next, target);
+};
+
+console.log(linkedListFindRecursive(a, "c"));
