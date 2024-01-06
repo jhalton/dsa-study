@@ -452,6 +452,7 @@ c.next = d;
 d.next = e;
 e.next = f;
 
+// ******* Per Alvin, this is a pretty common interview problem. Should consider reviewing again later.
 const reverseList = (head) => {
   let curr = head;
   let prev = null;
